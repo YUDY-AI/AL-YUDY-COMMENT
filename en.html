@@ -12,6 +12,34 @@
     color: #1e293b;
     min-height: 100vh;
     padding: 32px 24px;
+    position: relative;
+  }
+  .watermark-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    opacity: 0.045;
+  }
+  .watermark-item {
+    flex: 0 0 240px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-22deg);
+    font-size: 12px;
+    font-weight: 700;
+    color: #1e293b;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    user-select: none;
   }
   .header {
     position: relative;
@@ -305,6 +333,25 @@
     margin-top: 1px;
   }
   .commentary-subitem.lvl2 { font-size: 12.5px; color: #64748b; }
+  /* Outlook quadrant matrix */
+  .quadrant-axis-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin-bottom: 16px; }
+  .quadrant-axis { font-size: 12px; font-weight: 700; text-align: center; padding: 6px; border-radius: 20px; letter-spacing: 0.3px; }
+  .quadrant-axis.bull { background: #dcfce7; color: #166534; }
+  .quadrant-axis.bear { background: #fee2e2; color: #b91c1c; }
+  .quadrant-section-label { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; margin: 16px 0 10px; }
+  .quadrant-section-label:first-of-type { margin-top: 0; }
+  .quadrant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .quadrant-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
+  .quadrant-box-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .quadrant-icon { width: 34px; height: 34px; border-radius: 50%; background: #ffffff; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .quadrant-box-title { font-weight: 700; font-size: 14.5px; color: #0f172a; }
+  .quadrant-box-desc { font-size: 12.5px; color: #64748b; line-height: 1.6; margin-bottom: 10px; }
+  .quadrant-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+  .quadrant-tag.bull { background: #dcfce7; color: #166534; }
+  .quadrant-tag.bear { background: #fee2e2; color: #b91c1c; }
+  @media (max-width: 720px) {
+    .quadrant-axis-row, .quadrant-grid { grid-template-columns: 1fr; }
+  }
   /* Trade board (Buy / Sell) */
   .trade-board { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .trade-col-title {
@@ -327,6 +374,15 @@
     border: 1px solid #e2e8f0;
     border-radius: 8px;
   }
+  .trade-subgroup-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 14px 0 8px;
+  }
+  .trade-subgroup-title:first-of-type { margin-top: 0; }
   @media (max-width: 600px) {
     .trade-board { grid-template-columns: 1fr; gap: 16px; }
   }
@@ -431,6 +487,8 @@
 </style>
 </head>
 <body>
+
+<div class="watermark-layer" id="watermarkLayer"></div>
 
 <div class="header">
   <a href="index.html" class="lang-switch">中文</a>
@@ -546,6 +604,55 @@
   </ul>
 </div>
 
+<div class="commentary-card">
+  <div class="commentary-header">
+    <div class="commentary-title">🎯 Four Key Variables to Watch</div>
+    <div class="commentary-date">2026-06-12 · Peter</div>
+  </div>
+  <div class="quadrant-axis-row">
+    <div class="quadrant-axis bull">▲ Bullish / Supportive</div>
+    <div class="quadrant-axis bear">▼ Bearish / Pressure</div>
+  </div>
+  <div class="quadrant-section-label">Near-term (1-3 months)</div>
+  <div class="quadrant-grid">
+    <div class="quadrant-box">
+      <div class="quadrant-box-head">
+        <div class="quadrant-icon">⚠️</div>
+        <div class="quadrant-box-title">US-Iran geopolitics</div>
+      </div>
+      <div class="quadrant-box-desc">Renewed escalation could disrupt smelter supply and shipping, fueling safe-haven buying.</div>
+      <span class="quadrant-tag bull">Bullish / Support</span>
+    </div>
+    <div class="quadrant-box">
+      <div class="quadrant-box-head">
+        <div class="quadrant-icon">🚢</div>
+        <div class="quadrant-box-title">China aluminum exports</div>
+      </div>
+      <div class="quadrant-box-desc">Exports remain elevated, easing overseas tightness and capping price gains.</div>
+      <span class="quadrant-tag bear">Bearish / Pressure</span>
+    </div>
+  </div>
+  <div class="quadrant-section-label">Medium-term (3-12 months)</div>
+  <div class="quadrant-grid">
+    <div class="quadrant-box">
+      <div class="quadrant-box-head">
+        <div class="quadrant-icon">🏭</div>
+        <div class="quadrant-box-title">Middle East restart pace</div>
+      </div>
+      <div class="quadrant-box-desc">Smelter restarts involve equipment, power and technical hurdles, lagging market expectations.</div>
+      <span class="quadrant-tag bull">Bullish / Support</span>
+    </div>
+    <div class="quadrant-box">
+      <div class="quadrant-box-head">
+        <div class="quadrant-icon">🏗️</div>
+        <div class="quadrant-box-title">Overseas new capacity</div>
+      </div>
+      <div class="quadrant-box-desc">New projects in Indonesia and elsewhere are ramping up, expanding global supply.</div>
+      <span class="quadrant-tag bear">Bearish / Pressure</span>
+    </div>
+  </div>
+</div>
+
 <div class="commentary-card" style="border-left-color:#3D5E54">
   <div class="commentary-header">
     <div class="commentary-title">📋 Buy / Sell</div>
@@ -565,11 +672,15 @@
     </div>
     <div class="trade-col">
       <div class="trade-col-title trade-sell">Sell</div>
+      <div class="trade-subgroup-title">Finished Goods</div>
       <ul class="trade-list">
         <li>6063 Billet</li>
         <li>Plate (1-8 series aluminum sheet)</li>
         <li>Foil (1/3/8 series aluminum foil)</li>
         <li>Talon Coil (Aluminum wire)</li>
+      </ul>
+      <div class="trade-subgroup-title">Scrap / Remelt</div>
+      <ul class="trade-list">
         <li>Talon Baled (Baled aluminum wire)</li>
         <li>6063 MF Bale (Baled 6063)</li>
         <li>Tense 6%att (Raw aluminum, 6% contamination)</li>
@@ -591,6 +702,10 @@
   <div class="kpi-row" id="kpiRow2" style="grid-template-columns:repeat(2,1fr)"></div>
   <div class="kpi-group-label" style="margin-top:20px">MJP Premium 2026 · Major Japan Ports (USD/MT)</div>
   <div class="kpi-row" id="kpiRowMJP" style="grid-template-columns:repeat(4,1fr)"></div>
+  <div class="kpi-group-label" style="margin-top:20px">Regional Premium (USD/MT)</div>
+  <div class="kpi-row" id="kpiRowRegionalPremium" style="grid-template-columns:repeat(2,1fr)"></div>
+  <div class="kpi-group-label" style="margin-top:20px">Billet Premium (USD/MT)</div>
+  <div class="kpi-row" id="kpiRowBilletPremium" style="grid-template-columns:repeat(3,1fr)"></div>
 </div>
 
 <div class="chart-container" style="position:relative">
@@ -614,15 +729,15 @@
 
 <div class="chart-container" style="position:relative">
   <div class="chart-top">
-    <div class="chart-title">📈 Yangtze A00 Trend</div>
+    <div class="chart-title">📈 China A00 Trend</div>
     <div class="chart-legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#B59565"></div>Yangtze A00 Avg Price (CNY/MT)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#B59565"></div>China A00 Avg Price (CNY/MT)</div>
     </div>
   </div>
   <canvas id="chartCanvasCN"></canvas>
   <div class="tooltip-box" id="tooltipBoxCN">
     <div class="tooltip-date" id="ttDateCN"></div>
-    <div class="tooltip-row"><span class="tooltip-label">Yangtze A00 Avg</span><span class="tooltip-val" id="ttCnAvg" style="color:#B59565"></span></div>
+    <div class="tooltip-row"><span class="tooltip-label">China A00 Avg</span><span class="tooltip-val" id="ttCnAvg" style="color:#B59565"></span></div>
   </div>
 </div>
 
@@ -637,7 +752,7 @@
         <th>Cash Settlement (USD/MT)</th>
         <th>Daily Change</th>
         <th>3-Month (USD/MT)</th>
-        <th>Yangtze A00 Avg (CNY/MT)</th>
+        <th>China A00 Avg (CNY/MT)</th>
         <th>LME Inventory (MT)</th>
       </tr>
     </thead>
@@ -646,7 +761,7 @@
 </div>
 
 <div class="footer">
-  Compiled by Yudi Co., Ltd. &nbsp;·&nbsp; Author: Peter &nbsp;·&nbsp; Source: Westmetall GmbH &amp; Co. KG · westmetall.com &nbsp;·&nbsp; Yangtze A00 Avg Price: Yangtze Nonferrous Metals Network lvdingjia.com
+  Compiled by Yudi Co., Ltd. &nbsp;·&nbsp; Author: Peter &nbsp;·&nbsp; Source: Westmetall GmbH &amp; Co. KG · westmetall.com &nbsp;·&nbsp; China A00 Avg Price: Yangtze Nonferrous Metals Network lvdingjia.com
 </div>
 
 <script>
@@ -769,6 +884,19 @@ const mjpData = [
   { quarter:'Q2 2026', value: 351,   note:'Confirmed',  confirmed: true  },
   { quarter:'Q3 2026', value: 460,   note:'Estimated',  confirmed: false },
   { quarter:'Q4 2026', value: null,  note:'TBD',        confirmed: false },
+];
+
+// ── Regional Premium ──
+const regionalPremiumData = [
+  { label:'Europe', value: 600,  note:null },
+  { label:'US',     value: 2535, note:'≈ c115/lb' },
+];
+
+// ── Billet Premium ──
+const billetPremiumData = [
+  { label:'China',  value: 450 },
+  { label:'Asia',   value: 550 },
+  { label:'Europe', value: 1200 },
 ];
 
 // ── Yangtze Aluminum Ingot (SHFE Al) Avg Price CNY/MT — Source: Yangtze Nonferrous Metals Network lvdingjia.com ──
@@ -935,7 +1063,7 @@ const marHL  = monthFwdHL('2026-03');
 const latestCn = cnAl[0], prevCn = cnAl[1];
 const cnDayChange = latestCn.avg - prevCn.avg;
 
-// Yangtze A00 monthly avg (last month / 2 months ago / 3 months ago)
+// China A00 monthly avg (last month / 2 months ago / 3 months ago)
 function cnMonthAvg(key) {
   const rows = cnAl.filter(r => r.date.startsWith(key));
   if (!rows.length) return null;
@@ -950,7 +1078,7 @@ const cnJanAvg = cnMonthAvg('2026-01');
 const cnMayMoM    = cnMayAvg - cnAprAvg;
 const cnMayMoMCls = cnMayMoM >= 0 ? 'up' : 'down';
 
-// China aluminum wire rod price = (Yangtze A00 avg / 1.13 + 2400) / 6.75 + 60
+// China aluminum wire rod price = (China A00 avg / 1.13 + 2400) / 6.75 + 60
 const cnWireRodPrice = (latestCn.avg / 1.13 + 2400) / 6.75 + 60;
 function cnMomTag(cur, prev) {
   if (cur===null || prev===null) return '';
@@ -1048,16 +1176,16 @@ renderKpi('kpiRow1', [
 ]);
 
 renderKpi('kpiRowCN', [
-  { label:`Yangtze A00 Avg · ${fmtDateFull(latestCn.date)}`, value:`¥${fmtNum(latestCn.avg)}`,
+  { label:`China A00 Avg · ${fmtDateFull(latestCn.date)}`, value:`¥${fmtNum(latestCn.avg)}`,
     change:`${cnDayChange>=0?'▲':'▼'} ${fmtNum(Math.abs(cnDayChange))} vs Prev Day`,
     cls: cnDayChange>=0?'up':'down', color:'purple' },
-  { label:'Shanghai-London Ratio · Yangtze A00 / LME 3M', value: ratio!==null ? ratio.toFixed(2) : '—',
+  { label:'Shanghai-London Ratio · China A00 / LME 3M', value: ratio!==null ? ratio.toFixed(2) : '—',
     change: ratio!==null
       ? `${fmtDateFull(latest.date)} · ¥${fmtNum(lmeMatchCn)} / $${fmtNum(latest.fwd)}` +
         (ratioChange!==null ? ` <span style="color:${ratioChange>=0?'#059669':'#dc2626'};font-size:10px">(${ratioChange>=0?'▲':'▼'} ${Math.abs(ratioChange).toFixed(2)})</span>` : '')
       : 'Insufficient data for this date',
     cls:'neutral', color:'purple' },
-  { label:'Yangtze A00 Avg · May Avg', value:`¥${fmtNum(cnMayAvg)}`,
+  { label:'China A00 Avg · May Avg', value:`¥${fmtNum(cnMayAvg)}`,
     change:`${cnMayMoM>=0?'▲':'▼'} ${fmtNum(Math.abs(cnMayMoM))} vs Apr`,
     cls: cnMayMoMCls, color:'purple',
     extra: [
@@ -1108,6 +1236,25 @@ mjpData.forEach(m => {
     <div class="kpi-label">${m.quarter}</div>
     <div class="kpi-value">${hasVal ? '$'+m.value.toLocaleString() : '—'}</div>
     <div class="kpi-change ${m.confirmed ? 'up' : hasVal ? 'neutral' : 'neutral'}">${m.note || '—'}</div>
+  </div>`;
+});
+
+// ── Regional Premium Cards ──
+const regionalPremiumEl = document.getElementById('kpiRowRegionalPremium');
+regionalPremiumData.forEach(p => {
+  regionalPremiumEl.innerHTML += `<div class="kpi-card blue">
+    <div class="kpi-label">${p.label}</div>
+    <div class="kpi-value">$${p.value.toLocaleString()}</div>
+    ${p.note ? `<div class="kpi-change neutral">${p.note}</div>` : ''}
+  </div>`;
+});
+
+// ── Billet Premium Cards ──
+const billetPremiumEl = document.getElementById('kpiRowBilletPremium');
+billetPremiumData.forEach(p => {
+  billetPremiumEl.innerHTML += `<div class="kpi-card purple">
+    <div class="kpi-label">${p.label}</div>
+    <div class="kpi-value">$${p.value.toLocaleString()}</div>
   </div>`;
 });
 
@@ -1346,7 +1493,7 @@ canvas.addEventListener('mouseleave', () => {
 
 window.addEventListener('resize', () => drawChart(null));
 
-// ── Yangtze A00 line chart (last 60 data points) ──
+// ── China A00 line chart (last 60 data points) ──
 const cnDataFull = [...cnAl].reverse();         // oldest→newest
 const cnData     = cnDataFull.slice(-60);
 const NCN        = cnData.length;
@@ -1505,6 +1652,24 @@ tableRows.forEach((row, i) => {
     </div></td>
   </tr>`;
 });
+
+// ── Watermark ──
+(function(){
+  const layer = document.getElementById('watermarkLayer');
+  const text = 'YUDI CO., LTD. · INTERNAL';
+  const itemW = 240, itemH = 130;
+  const cols = Math.ceil(window.innerWidth / itemW) + 2;
+  const rows = Math.ceil(document.body.scrollHeight / itemH) + 2;
+  const frag = document.createDocumentFragment();
+  for (let i=0;i<cols*rows;i++){
+    const div = document.createElement('div');
+    div.className = 'watermark-item';
+    div.textContent = text;
+    frag.appendChild(div);
+  }
+  layer.appendChild(frag);
+  layer.style.height = document.body.scrollHeight + 'px';
+})();
 </script>
 </body>
 </html>
