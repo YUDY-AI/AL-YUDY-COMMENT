@@ -12,6 +12,34 @@
     color: #1e293b;
     min-height: 100vh;
     padding: 32px 24px;
+    position: relative;
+  }
+  .watermark-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    opacity: 0.045;
+  }
+  .watermark-item {
+    flex: 0 0 240px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-22deg);
+    font-size: 12px;
+    font-weight: 700;
+    color: #1e293b;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    user-select: none;
   }
   .header {
     position: relative;
@@ -305,6 +333,25 @@
     margin-top: 1px;
   }
   .commentary-subitem.lvl2 { font-size: 12.5px; color: #64748b; }
+  /* Outlook quadrant matrix */
+  .quadrant-axis-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin-bottom: 16px; }
+  .quadrant-axis { font-size: 12px; font-weight: 700; text-align: center; padding: 6px; border-radius: 20px; letter-spacing: 0.3px; }
+  .quadrant-axis.bull { background: #dcfce7; color: #166534; }
+  .quadrant-axis.bear { background: #fee2e2; color: #b91c1c; }
+  .quadrant-section-label { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; margin: 16px 0 10px; }
+  .quadrant-section-label:first-of-type { margin-top: 0; }
+  .quadrant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .quadrant-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
+  .quadrant-box-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .quadrant-icon { width: 34px; height: 34px; border-radius: 50%; background: #ffffff; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .quadrant-box-title { font-weight: 700; font-size: 14.5px; color: #0f172a; }
+  .quadrant-box-desc { font-size: 12.5px; color: #64748b; line-height: 1.6; margin-bottom: 10px; }
+  .quadrant-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+  .quadrant-tag.bull { background: #dcfce7; color: #166534; }
+  .quadrant-tag.bear { background: #fee2e2; color: #b91c1c; }
+  @media (max-width: 720px) {
+    .quadrant-axis-row, .quadrant-grid { grid-template-columns: 1fr; }
+  }
   /* Trade board (求購 / 銷售) */
   .trade-board { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .trade-col-title {
@@ -327,6 +374,15 @@
     border: 1px solid #e2e8f0;
     border-radius: 8px;
   }
+  .trade-subgroup-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 14px 0 8px;
+  }
+  .trade-subgroup-title:first-of-type { margin-top: 0; }
   @media (max-width: 600px) {
     .trade-board { grid-template-columns: 1fr; gap: 16px; }
   }
@@ -431,6 +487,8 @@
 </style>
 </head>
 <body>
+
+<div class="watermark-layer" id="watermarkLayer"></div>
 
 <div class="header">
   <a href="en.html" class="lang-switch">EN</a>
@@ -546,6 +604,55 @@
   </ul>
 </div>
 
+<div class="commentary-card">
+  <div class="commentary-header">
+    <div class="commentary-title">🎯 後市四大關注變量</div>
+    <div class="commentary-date">2026-06-12 · Peter</div>
+  </div>
+  <div class="quadrant-axis-row">
+    <div class="quadrant-axis bull">▲ 偏多／支撐鋁價</div>
+    <div class="quadrant-axis bear">▼ 偏空／壓抑鋁價</div>
+  </div>
+  <div class="quadrant-section-label">短期（1-3個月）</div>
+  <div class="quadrant-grid">
+    <div class="quadrant-box">
+      <div class="quadrant-box-head">
+        <div class="quadrant-icon">⚠️</div>
+        <div class="quadrant-box-title">美伊地緣政治</div>
+      </div>
+      <div class="quadrant-box-desc">衝突若再升級，恐衝擊產區供應與航運，引發避險買盤。</div>
+      <span class="quadrant-tag bull">偏多／支撐</span>
+    </div>
+    <div class="quadrant-box">
+      <div class="quadrant-box-head">
+        <div class="quadrant-icon">🚢</div>
+        <div class="quadrant-box-title">中國鋁出口</div>
+      </div>
+      <div class="quadrant-box-desc">出口量持續處於高檔，緩解海外現貨緊張，限制漲幅。</div>
+      <span class="quadrant-tag bear">偏空／壓力</span>
+    </div>
+  </div>
+  <div class="quadrant-section-label">中期（3-12個月）</div>
+  <div class="quadrant-grid">
+    <div class="quadrant-box">
+      <div class="quadrant-box-head">
+        <div class="quadrant-icon">🏭</div>
+        <div class="quadrant-box-title">中東復產進度</div>
+      </div>
+      <div class="quadrant-box-desc">電解槽復產牽涉設備、用電與技術，實際進度慢於市場預期。</div>
+      <span class="quadrant-tag bull">偏多／支撐</span>
+    </div>
+    <div class="quadrant-box">
+      <div class="quadrant-box-head">
+        <div class="quadrant-icon">🏗️</div>
+        <div class="quadrant-box-title">海外新增產能</div>
+      </div>
+      <div class="quadrant-box-desc">印尼等地新項目陸續投產爬坡，逐步擴大全球供給基數。</div>
+      <span class="quadrant-tag bear">偏空／壓力</span>
+    </div>
+  </div>
+</div>
+
 <div class="commentary-card" style="border-left-color:#3D5E54">
   <div class="commentary-header">
     <div class="commentary-title">📋 求購 / 銷售</div>
@@ -565,11 +672,15 @@
     </div>
     <div class="trade-col">
       <div class="trade-col-title trade-sell">銷售</div>
+      <div class="trade-subgroup-title">成品 Finished Goods</div>
       <ul class="trade-list">
         <li>6063 Billet (6063均值鋁棒)</li>
         <li>Plat (1-8系鋁板)</li>
         <li>Foil (1/3/8鋁箔)</li>
         <li>Talon Coil (鋁線)</li>
+      </ul>
+      <div class="trade-subgroup-title">再生料 Scrap/Remelt</div>
+      <ul class="trade-list">
         <li>Talon Baled (鋁線壓包)</li>
         <li>6063 MF Bale (6063壓包)</li>
         <li>Tense 6%att (生鋁 6%雜)</li>
@@ -591,6 +702,10 @@
   <div class="kpi-row" id="kpiRow2" style="grid-template-columns:repeat(2,1fr)"></div>
   <div class="kpi-group-label" style="margin-top:20px">MJP Premium 2026 · Major Japan Ports (USD/MT)</div>
   <div class="kpi-row" id="kpiRowMJP" style="grid-template-columns:repeat(4,1fr)"></div>
+  <div class="kpi-group-label" style="margin-top:20px">區域 Premium · Regional Premium (USD/MT)</div>
+  <div class="kpi-row" id="kpiRowRegionalPremium" style="grid-template-columns:repeat(2,1fr)"></div>
+  <div class="kpi-group-label" style="margin-top:20px">鋁棒 Premium · Billet Premium (USD/MT)</div>
+  <div class="kpi-row" id="kpiRowBilletPremium" style="grid-template-columns:repeat(3,1fr)"></div>
 </div>
 
 <div class="chart-container" style="position:relative">
@@ -769,6 +884,19 @@ const mjpData = [
   { quarter:'Q2 2026', value: 351,   note:'已確認',     confirmed: true  },
   { quarter:'Q3 2026', value: 460,   note:'預計',       confirmed: false },
   { quarter:'Q4 2026', value: null,  note:'TBD',        confirmed: false },
+];
+
+// ── 區域 Premium ──
+const regionalPremiumData = [
+  { label:'歐洲 Europe', value: 600,  note:null },
+  { label:'美國 US',     value: 2535, note:'≈ c115/lb' },
+];
+
+// ── 鋁棒(Billet) Premium ──
+const billetPremiumData = [
+  { label:'中國 China', value: 450 },
+  { label:'亞洲 Asia',  value: 550 },
+  { label:'歐洲 Europe', value: 1200 },
 ];
 
 // ── 長江鋁錠（滬鋁）平均價 CNY/MT — 資料來源：長江有色金屬網 lvdingjia.com ──
@@ -1108,6 +1236,25 @@ mjpData.forEach(m => {
     <div class="kpi-label">${m.quarter}</div>
     <div class="kpi-value">${hasVal ? '$'+m.value.toLocaleString() : '—'}</div>
     <div class="kpi-change ${m.confirmed ? 'up' : hasVal ? 'neutral' : 'neutral'}">${m.note || '—'}</div>
+  </div>`;
+});
+
+// ── Regional Premium Cards ──
+const regionalPremiumEl = document.getElementById('kpiRowRegionalPremium');
+regionalPremiumData.forEach(p => {
+  regionalPremiumEl.innerHTML += `<div class="kpi-card blue">
+    <div class="kpi-label">${p.label}</div>
+    <div class="kpi-value">$${p.value.toLocaleString()}</div>
+    ${p.note ? `<div class="kpi-change neutral">${p.note}</div>` : ''}
+  </div>`;
+});
+
+// ── Billet Premium Cards ──
+const billetPremiumEl = document.getElementById('kpiRowBilletPremium');
+billetPremiumData.forEach(p => {
+  billetPremiumEl.innerHTML += `<div class="kpi-card purple">
+    <div class="kpi-label">${p.label}</div>
+    <div class="kpi-value">$${p.value.toLocaleString()}</div>
   </div>`;
 });
 
@@ -1505,6 +1652,24 @@ tableRows.forEach((row, i) => {
     </div></td>
   </tr>`;
 });
+
+// ── Watermark ──
+(function(){
+  const layer = document.getElementById('watermarkLayer');
+  const text = '宇鏑有限公司 · 內部資料';
+  const itemW = 240, itemH = 130;
+  const cols = Math.ceil(window.innerWidth / itemW) + 2;
+  const rows = Math.ceil(document.body.scrollHeight / itemH) + 2;
+  const frag = document.createDocumentFragment();
+  for (let i=0;i<cols*rows;i++){
+    const div = document.createElement('div');
+    div.className = 'watermark-item';
+    div.textContent = text;
+    frag.appendChild(div);
+  }
+  layer.appendChild(frag);
+  layer.style.height = document.body.scrollHeight + 'px';
+})();
 </script>
 </body>
 </html>
