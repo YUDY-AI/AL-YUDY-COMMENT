@@ -484,6 +484,16 @@
     td, th { padding: 9px 12px; font-size: 12px; }
     .table-header-row { padding: 14px 16px; }
   }
+
+  /* ── 台指期區塊 ── */
+  .tx-badge { display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:2px 9px;border-radius:10px; }
+  .tx-live   { background:#dcfce7;color:#166534; }
+  .tx-night  { background:#dbeafe;color:#1e40af; }
+  .tx-closed { background:#f1f5f9;color:#64748b; }
+  .tx-warn   { background:#fef3c7;color:#92400e; }
+  .tx-error  { background:#fee2e2;color:#dc2626; }
+  .tx-extlink { display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#3D5E54;text-decoration:none;padding:4px 12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:20px;margin-top:6px; }
+  .tx-extlink:hover { background:#dcfce7; }
 </style>
 </head>
 <body>
@@ -541,8 +551,8 @@
     <div class="header-meta">
       <div class="header-badge badge-ip"><span>智慧財產權</span>宇鏑有限公司</div>
       <div class="header-badge badge-author"><span>撰寫人</span>Peter</div>
-      <div class="header-badge badge-date"><span>撰寫日期</span>2026-06-23</div>
-      <div class="header-badge badge-data"><span>資料截至</span>2026-06-22</div>
+      <div class="header-badge badge-date"><span>撰寫日期</span>2026-06-29</div>
+      <div class="header-badge badge-data"><span>資料截至</span>2026-06-26</div>
       <div class="header-badge badge-legal"><span>法律顧問</span>略策股份有限公司</div>
     </div>
   </div>
@@ -552,20 +562,20 @@
 <div class="commentary-card">
   <div class="commentary-header">
     <div class="commentary-title">📝 市場評論</div>
-    <div class="commentary-date">2026-06-22 · Peter</div>
+    <div class="commentary-date">2026-06-29 · Peter</div>
   </div>
   <ul class="commentary-list">
     <li class="commentary-item">
       <div class="commentary-num c-obs">1</div>
-      <div><span class="commentary-tag tag-obs">LME 價差</span>LME 3M 本週高點 3,426.5、低點 3,359 美元/噸，高低差 67.5 美元/噸。現貨（Cash）高於 3M，呈負價差（Backwardation），顯示近月現貨需求相對偏緊。</div>
+      <div><span class="commentary-tag tag-obs">LME 週幅</span>上週（6/22–6/26）Cash 高點 3,405.00、低點 3,132.00，高低差 273.00 美元/噸；3M 高點 3,406.00、低點 3,146.00，高低差 260.00 美元/噸。週內大幅下跌，月初高點 3,855 至今回落逾 700 美元。現貨低於 3M，結構已由 Backwardation 轉為 Contango，顯示近月需求壓力舒緩，並已回到 1–2 月份的價格區間。</div>
     </li>
     <li class="commentary-item">
       <div class="commentary-num c-bull">2</div>
-      <div><span class="commentary-tag tag-bull">庫存</span>LME 倉庫鋁庫存持續下滑，近期每日約有 1,500 噸被提走，去庫速度穩定，對現貨價格形成支撐，亦是 Cash 高於 3M 呈 Backwardation 的結構性原因之一。</div>
+      <div><span class="commentary-tag tag-bull">庫存</span>LME 倉庫鋁庫存持續下滑，近期每日約有 1,500 噸被提走，去庫速度穩定，長期對現貨價格形成支撐。</div>
     </li>
     <li class="commentary-item">
       <div class="commentary-num c-obs">3</div>
-      <div><span class="commentary-tag tag-obs">滬倫比</span>滬鋁 A00 長江均價 ¥23,870/噸，美元兌人民幣 6.76，換算 LME 等值約 3,531 美元/噸。鋁絞線 FOB 報價約 3,545 美元/噸，相對優勢已較前期降低，需持續追蹤匯率變化。</div>
+      <div><span class="commentary-tag tag-obs">滬倫比</span>滬鋁 A00 長江均價 ¥22,930/噸，美元兌人民幣 6.78，換算 LME 等值約 3,520 美元/噸。鋁絞線 FOB 報價約 3,350 美元/噸；A7 純鋁錠國外報價落在 LME+$250–450（約 3,414–3,614 美元/噸），鋁絞線相對 A7 錠的價格優勢愈來愈小，競爭力持續受壓。</div>
     </li>
     <li class="commentary-item">
       <div class="commentary-num c-obs">4</div>
@@ -573,7 +583,7 @@
     </li>
     <li class="commentary-item">
       <div class="commentary-num c-obs">5</div>
-      <div><span class="commentary-tag tag-obs">外匯</span>美元指數 110.9，美元兌日圓 161.4，美元兌台幣 31.61。日圓相對偏弱，以日圓計價的採購成本明顯較高；強美元環境持續壓抑以美元計價的金屬價格。</div>
+      <div><span class="commentary-tag tag-obs">外匯</span>美元指數（DXY）110.14，美元兌日圓（USD/JPY）161.9，美元兌台幣（USD/TWD）31.86。DXY 維持高位，造成資金回籠美元，股票與原物料價格同步修正；日圓持續偏弱，以日圓計價的採購成本居高不下。</div>
     </li>
     <li class="commentary-item">
       <div class="commentary-num c-obs">6</div>
@@ -581,10 +591,14 @@
     </li>
     <li class="commentary-item">
       <div class="commentary-num c-act">7</div>
-      <div><span class="commentary-tag tag-act">展會</span>第 21 屆中國國際鋁工業展：2026/7/8–7/10，上海國際博覽中心。SMM 再生金屬論壇：2026/7/16–7/17，寧波威斯町酒店。兩場展會為掌握下半年市場動向的重要場合。</div>
+      <div><span class="commentary-tag tag-act">展會</span>第 21 屆中國國際鋁工業展：2026/7/8–7/10，上海國際博覽中心。SMM 再生金屬論壇：2026/8/17–8/18，寧波威斯町酒店。兩場展會為掌握下半年市場動向的重要場合。</div>
     </li>
     <li class="commentary-item">
-      <div class="commentary-num c-analysis">8</div>
+      <div class="commentary-num c-warn">8</div>
+      <div><span class="commentary-tag tag-warn">政策</span>歐盟擬首次對出口商品徵稅，目標鋁廢料，擬課 15% 出口關稅，提案預計 9 月提出。背景：2025 年歐盟鋁廢料出口創歷史新高 127 萬噸，導致國內冶煉廠原料短缺、15% 產能閒置，年缺口約 200 萬噸；廢料價格自 2025/10 已翻倍，海外買家出價遠高於本地。鋼鐵業支持類似廢鋼限制，廢料回收業者反對；提案需歐盟成員國特定多數通過方能生效。若通過，對流向亞洲的再生料供應將構成結構性衝擊。</div>
+    </li>
+    <li class="commentary-item">
+      <div class="commentary-num c-analysis">9</div>
       <div><span class="commentary-tag tag-analysis">分析</span>鋁期貨多空交戰：霍爾木茲海峽開放又關閉，地緣政治風險溢價反覆；然而市場預期美國今年仍有升息空間，美元指數維持高位，對金屬價格形成系統性壓力，短期漲幅恐受限。</div>
     </li>
   </ul>
@@ -686,6 +700,7 @@
         <li>Tense 6%att (生鋁 6%雜)</li>
         <li>Trump 5%att (機頭鋁)</li>
         <li>Ak5m2 (adc非標鋁錠)</li>
+        <li>ADC 12 ingot (ADC 12錠)</li>
         <li>96 ingot (96錠)</li>
         <li>3104 ingot (3104錠)</li>
       </ul>
@@ -706,6 +721,27 @@
   <div class="kpi-row" id="kpiRowRegionalPremium" style="grid-template-columns:repeat(2,1fr)"></div>
   <div class="kpi-group-label" style="margin-top:20px">鋁棒 Premium · Billet Premium (USD/MT)</div>
   <div class="kpi-row" id="kpiRowBilletPremium" style="grid-template-columns:repeat(3,1fr)"></div>
+</div>
+
+<!-- ── 台指期夜盤 ── -->
+<div class="kpi-section">
+  <div class="kpi-group-label" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    台指期（TXF1）夜盤
+    <span id="txState" class="tx-badge tx-closed"></span>
+    <span id="txUpdated" style="font-size:10px;color:#94a3b8"></span>
+    <a href="https://www.cmoney.tw/forum/futures/TXF1?s=p" target="_blank" style="font-size:10px;color:#3D5E54;margin-left:auto;text-decoration:none">CMoney ↗</a>
+  </div>
+  <div class="kpi-row" style="grid-template-columns:repeat(2,1fr)">
+    <div class="kpi-card blue">
+      <div class="kpi-label">最新成交價</div>
+      <div class="kpi-value" id="txPrice" style="font-size:36px;letter-spacing:-1px">--</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">當日漲跌</div>
+      <div class="kpi-value" id="txChange" style="font-size:36px;letter-spacing:-1px">--</div>
+      <div class="kpi-change neutral" id="txPct"></div>
+    </div>
+  </div>
 </div>
 
 <div class="chart-container" style="position:relative">
@@ -766,6 +802,11 @@
 
 <script>
 const raw = [
+  { date:"2026-06-26", cash:3164.00, fwd:3176.00, stock:306725 },
+  { date:"2026-06-25", cash:3132.00, fwd:3146.00, stock:308225 },
+  { date:"2026-06-24", cash:3150.00, fwd:3160.50, stock:310225 },
+  { date:"2026-06-23", cash:3263.50, fwd:3271.00, stock:311725 },
+  { date:"2026-06-22", cash:3405.00, fwd:3406.00, stock:313800 },
   { date:"2026-06-19", cash:3400.00, fwd:3398.00, stock:315300 },
   { date:"2026-06-18", cash:3402.00, fwd:3401.00, stock:315525 },
   { date:"2026-06-17", cash:3405.50, fwd:3410.00, stock:316525 },
@@ -908,6 +949,11 @@ const billetPremiumData = [
 
 // ── 長江鋁錠（滬鋁）平均價 CNY/MT — 資料來源：長江有色金屬網 lvdingjia.com ──
 const cnAl = [
+  { date:"2026-06-29", avg:22930 },
+  { date:"2026-06-26", avg:22870 },
+  { date:"2026-06-25", avg:22840 },
+  { date:"2026-06-24", avg:23470 },
+  { date:"2026-06-23", avg:23800 },
   { date:"2026-06-22", avg:23870 },
   { date:"2026-06-18", avg:23870 },
   { date:"2026-06-17", avg:23850 },
@@ -1665,6 +1711,29 @@ tableRows.forEach((row, i) => {
     </div></td>
   </tr>`;
 });
+
+// ── 台指期夜盤（由排程任務更新） ──
+const txData = { price: 44995, change: 543, pct: 1.22, updated: "2026-06-29" };
+(function renderTX() {
+  const now = new Date();
+  const h = +now.toLocaleString('en-US', { timeZone: 'Asia/Taipei', hour: '2-digit', hour12: false });
+  const stEl = document.getElementById('txState');
+  if (stEl) {
+    if      (h >= 8  && h < 14) { stEl.textContent = '日盤'; stEl.className = 'tx-badge tx-live';   }
+    else if (h >= 15 || h < 5 ) { stEl.textContent = '夜盤'; stEl.className = 'tx-badge tx-night';  }
+    else                         { stEl.textContent = '收盤'; stEl.className = 'tx-badge tx-closed'; }
+  }
+  if (!txData.price) return;
+  const dir = txData.change >= 0 ? '▲' : '▼';
+  const cls = txData.change >= 0 ? 'up' : 'down';
+  const clr = txData.change >= 0 ? '#059669' : '#dc2626';
+  document.getElementById('txPrice').textContent  = txData.price.toLocaleString('zh-TW');
+  document.getElementById('txChange').textContent = `${dir} ${Math.abs(txData.change).toLocaleString('zh-TW')}`;
+  document.getElementById('txChange').style.color = clr;
+  document.getElementById('txPct').textContent    = txData.pct != null ? `(${txData.pct >= 0 ? '+' : ''}${txData.pct.toFixed(2)}%)` : '';
+  document.getElementById('txPct').className      = `kpi-change ${cls}`;
+  if (txData.updated) document.getElementById('txUpdated').textContent = `截至 ${txData.updated}`;
+})();
 
 // ── Watermark ──
 (function(){
